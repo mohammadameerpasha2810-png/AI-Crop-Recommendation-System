@@ -15,7 +15,7 @@ export default function Prediction() {
   const predictCrop = async () => {
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/predict",
+        ""https://ai-crop-recommendation-system-3br5.onrender.com/predict",
         null,
         {
           params: {
