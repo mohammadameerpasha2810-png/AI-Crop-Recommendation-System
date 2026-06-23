@@ -15,9 +15,9 @@ export default function Prediction() {
   const predictCrop = async () => {
     try {
       const response = await axios.post(
-        ""https://ai-crop-recommendation-system-3br5.onrender.com/predict",
-        null,
-        {
+  "https://ai-crop-recommendation-system-3br5.onrender.com/predict",
+  null,
+  {
           params: {
             N,
             P,
