@@ -1,10 +1,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import joblib
+import os
 
 app = FastAPI()
 
-# CORS
+# CORS Configuration
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
@@ -12,6 +13,7 @@ app.add_middleware(
         "http://127.0.0.1:5173",
         "http://localhost:5174",
         "http://127.0.0.1:5174",
+        "https://YOUR-VERCEL-URL.vercel.app"
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -19,13 +21,16 @@ app.add_middleware(
 )
 
 # Load trained model
-model = joblib.load("crop_model.pkl")
+BASE_DIR = os.path.dirname(__file__)
+model = joblib.load(os.path.join(BASE_DIR, "crop_model.pkl"))
+
 
 @app.get("/")
 def home():
     return {
         "message": "AI Crop Recommendation API Running"
     }
+
 
 @app.post("/predict")
 def predict(
