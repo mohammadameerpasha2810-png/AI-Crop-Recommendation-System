@@ -15,20 +15,20 @@ export default function Prediction() {
   const predictCrop = async () => {
     try {
       const response = await axios.post(
-  "https://ai-crop-recommendation-system-3br5.onrender.com/predict",
+  "https://ai-crop-recommendation-system-6yiq.onrender.com/predict",
   null,
   {
-          params: {
-            N,
-            P,
-            K,
-            temperature,
-            humidity,
-            ph,
-            rainfall,
-          },
-        }
-      );
+    params: {
+      N,
+      P,
+      K,
+      temperature,
+      humidity,
+      ph,
+      rainfall,
+    },
+  }
+);
 
       setResult(response.data.recommended_crop);
     } catch (error) {
